@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="chatSocketIO">
+<head>
+  <meta charset="utf-8">
+  <title>Chat com Socket.Io</title>
+
+
+  <style media="screen">
+  .principal{
+    background-color: #CFF09E;
+    color: #0B486B;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+    padding: 10px;
+  }
+
+  .historico{
+    height: 250px;
+    overflow: auto;
+  }
+  .textoUsuario{color: #3B8686;}
+  </style>
+</head>
+<body ng-controller="chatSocketIOCtrl" ng-init="buscarHistorico()">
+  <div class="principal">
+    <h2 class="text-center"><span class="fa fa-smile-o"></span> {{app}}</h2>
+
+    <div ng-show="possuiUsuario">
+      <div class="panel panel-default historico">
+        <div ng-repeat="mensagem in mensagens">
+          <b class="textoUsuario">{{mensagem.usuario}} diz:</b> {{mensagem.texto}}
+        </div>
+      </div>
+
+      <input class="form-control" type="text" placeholder="Insira sua mensagem ;) " value="" ng-model="mensagem" ng-keyup="enviarMsg(mensagem, $event)">
+    </div>
+
+    <div ng-hide="possuiUsuario">
+      <input class="form-control" type="text" placeholder="informe o usuario!" value="" ng-model="usuario" ng-keyup="entrar($event)">
+    </div>
+
+  </div>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/socket.io-client/socket.io.js"></script>
+  <script src="js/controller.js"></script>
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="lib/font-awesome/css/font-awesome.css">
+</body>
+</html>
