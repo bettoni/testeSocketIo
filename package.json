@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "engines": {
     "node": "4.2.3",
-    "npm": "2.14.17"
+    "npm": "2.14.7"
   },
   "description": "app de testes com node, angular e socketio",
   "main": "index.js",
